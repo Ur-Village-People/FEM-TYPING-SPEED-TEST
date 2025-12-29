@@ -1,0 +1,38 @@
+@use '../util' as *;
+.result {
+    &__img {
+
+    }
+    &__title {
+
+    }
+    &__p {
+
+    }
+    &__final-stats {
+
+    }
+    &__container {
+        &__title {
+
+        }
+        &__wpm {
+
+        }
+        &__accuracy {
+
+        }
+        &__p {
+
+        }
+        &__total-chars {
+
+        }
+        &__incorrect-chars {
+
+        }
+    }
+    &__restart-btn {
+        
+    }
+}

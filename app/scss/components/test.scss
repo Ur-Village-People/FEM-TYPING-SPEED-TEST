@@ -1,1 +1,22 @@
-@use '../util' as *;
+@use "../util" as *;
+.test {
+	display: flex;
+	flex-direction: column;
+	gap: to-rem(64);
+	&__display {
+		width: 100%;
+		height: fit-content;
+		min-height: to-rem(438);
+		.correct {
+			color: var(--color-correct);
+		}
+		.incorrect {
+			color: var(--color-incorrect);
+			text-decoration: underline;
+		}
+	}
+	&__restart {
+		.img {
+		}
+	}
+}

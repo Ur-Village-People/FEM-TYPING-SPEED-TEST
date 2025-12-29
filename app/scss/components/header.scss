@@ -1,1 +1,23 @@
-@use '../util' as *;
+@use "../util" as *;
+.header {
+	height: fit-content;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+	&__logo {
+	}
+	&__personal-best {
+		display: flex;
+        gap: to-rem(10);
+        // align-self: flex-end;
+	}
+	&__icon {
+        height: to-rem(18);
+		width: auto;
+	}
+	&__p {
+        white-space: nowrap;
+        color: var(--text-ghost);
+	}
+}
