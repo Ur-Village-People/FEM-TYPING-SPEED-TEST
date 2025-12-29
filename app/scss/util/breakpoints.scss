@@ -5,9 +5,8 @@ $breakpoints-up: (
     'large': '56.25em',
     'xlarge': '87.5em',
 );
-//499px, 639px, 899px, 1399px
+//639px, 899px, 1399px
 $breakpoints-down: (
-    'xsmall': '31.1875em',
     'small': '39.9375em',
     'medium': '56.1875em',
     'large': '87.4375em',
@@ -22,3 +21,11 @@ $breakpoints-down: (
         @content;
     }
 }
+// ## Layout
+
+// The designs were created to the following widths:
+
+// - Mobile: 375px
+// - Desktop: 1440px
+
+// > 💡 These are just the design sizes. Ensure content is responsive and meets WCAG requirements by testing the full range of screen sizes from 320px to large screens.

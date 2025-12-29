@@ -11,6 +11,14 @@
 			sizes="32x32"
 			href="./assets/images/favicon-32x32.png"
 		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<script defer src="script.js"></script>
 
 		<title>Frontend Mentor | Typing Speed Test</title>
 
@@ -26,101 +34,167 @@
 		</style>
 	</head>
 	<body>
-		<main>
-			<header>
-				<img src="" alt="" />
-				<div>
-					<div>
-						<img src="./assets/images/icon-personal-best.svg" alt="">
-					</div>
-					<p>Personal best: <span></span></p>
+		<main class="container">
+			<header class="header">
+				<div class="header__logo">
+					<img
+						src="./assets/images/logo-large.svg"
+						alt="Typing Test Logo"
+					/>
+				</div>
+				<h1 class="visually-hidden">Typing test</h1>
+				<div class="header__personal-best">
+					<img
+						src="./assets/images/icon-personal-best.svg"
+						alt=""
+						class="header__icon"
+					/>
+					<p class="header__">
+						Personal best: <span id="high-score-display">0</span>
+					</p>
 				</div>
 			</header>
-			<div>
-				<section>
-						<div>
-							<p>WPM: <span>0</span></p>
-							<p>Accuracy: <span>100</span>%</p>
-							<p>Time: <span>0:60</span></p>
-						</div>
-						<div>
-							<div>
-								<p>Difficulty:</p>
-								<button>Easy</button>
-								<button>Medium</button>
-								<button>Hard</button>
-							</div>
-							<div>
-								<p>Mode:</p>
-								<button>Timed (60s)</button>
-								<button>Passage</button>
-							</div>
-						</div>
-				</section>
-				
-				<section>
+			<div id="game-container" class="game-container">
+				<section id="stats-bar" class="stats-bar">
+					<div class="stats-bar__container">
+						<p class="stats-bar__title">
+							WPM: <span id="current-wpm">0</span>
+						</p>
+						<p class="stats-bar__title">
+							Accuracy: <span id="current-accuracy">100</span>%
+						</p>
+						<p class="stats-bar__title">
+							Time: <span id="timer-display">60</span>s
+						</p>
+					</div>
 					<div>
-						<div>
-							<button>Start Typing Test</button>
-							<p>Or click the text and start typing</p>
+						<div
+							id="difficulty-settings"
+							class="stats-bar__difficulty"
+						>
+							<p class="stats-bar__title">Difficulty:</p>
+							<button class="difficulty-btn" data-level="easy">
+								Easy
+							</button>
+							<button class="difficulty-btn" data-level="medium">
+								Medium
+							</button>
+							<button class="difficulty-btn" data-level="hard">
+								Hard
+							</button>
 						</div>
-						<div>
-							<p></p>
-							<button type="reset">Restart Test <img src="./assets/images/icon-restart.svg" alt=""></button>
+						<div id="mode-settings" class="stats-bar__mode">
+							<p class="stats-bar__title">Mode:</p>
+							<button class="mode-btn is-active" data-time="15">
+								15s
+							</button>
+							<button class="mode-btn" data-time="30">30s</button>
+							<button class="mode-btn" data-time="60">60s</button>
+							<button class="mode-btn" data-time="120">
+								120s
+							</button>
+							<button class="mode-btn" data-mode="passage">
+								Passage
+							</button>
 						</div>
+					</div>
+				</section>
+
+				<section id="test-section" class="test-section">
+					<div id="test-wrapper" class="test-wrapper">
+						<div
+							id="start-screen"
+							class="test-wrapper__start-screen"
+						>
+							<button id="start-btn" class="test-wrapper__btn">
+								Start Typing Test
+							</button>
+							<p class="test-wrapper__p">
+								Or click the text and start typing
+							</p>
+						</div>
+						<div class="test-wrapper__test">
+							<p
+								id="quote-display"
+								class="test-wrapper__display"
+								aria-live="polite"
+							></p>
+							<textarea
+								id="typing-input"
+								class="visually-hidden"
+								spellcheck="false"
+								autocapitalize="off"
+								autocomplete="off"
+								aria-label="Typing input area"
+							></textarea>
+						</div>
+
+						<button
+							type="reset"
+							id="restart-btn"
+							class="test-wrapper__restart"
+						>
+							Restart Test
+							<img
+								src="./assets/images/icon-restart.svg"
+								alt="Restart"
+							/>
+						</button>
 					</div>
 
-					<div>
-						<div></div>
-						<h2>Test Complete!</h2>
-						<p>Solid run. Keep pushing to beat your high score.</p>
-						<div>
-							<div>
-								<h3>WPM:</h3>
-								<p></p>
+					<div id="results-screen" class="result">
+						<div class="result__img"></div>
+						<h2 class="result__title">Test Complete!</h2>
+						<p class="result__p">
+							Solid run. Keep pushing to beat your high score.
+						</p>
+						<div class="result__final-stats">
+							<div class="result__container">
+								<h3 class="result__container__title">WPM:</h3>
+								<p
+									id="final-wpm"
+									class="result__container__wpm"
+								>
+									0
+								</p>
 							</div>
-							<div>
-								<h3>Accuracy:</h3>
-								<p><span>100</span>%</p>
+							<div class="result__container">
+								<h3 class="result__container__title">
+									Accuracy:
+								</h3>
+								<p class="result__container__accuracy">
+									<span id="final-accuracy">100</span>%
+								</p>
 							</div>
-							<div>
-								<h3>Characters:</h3>
-								<p><span>120</span>/<span>5</span></p>
+							<div class="result__container">
+								<h3 class="result__container__title">
+									Characters:
+								</h3>
+								<p class="result__container__p">
+									<span
+										id="total-chars"
+										class="result__container__total-chars"
+										>0</span
+									>
+									/
+									<span
+										id="incorrect-chars"
+										class="result__container__incorrect-chars"
+										>0</span
+									>
+								</p>
 							</div>
 						</div>
+						<button
+							id="result-restart-btn"
+							class="result__restart-btn"
+						>
+							Beat this score
+						</button>
 					</div>
-					<button>Beat this score</button>
 				</section>
 			</div>
 		</main>
-
-		
-		<!-- PB -->
-		WPM WPM:
-		<!-- WPM -->
-		Accuracy:
-		<!-- Accuracy -->
-		Time:
-		<!-- Time -->
-
-		Difficulty: Easy Medium Hard Mode: Timed (60s) Passage
-
-		<!-- Passage -->
-
-		Start Typing Test Or click the text and start typing
-
-		<!-- Test Complete Start -->
-
-		Test Complete! Solid run. Keep pushing to beat your high score. WPM:
-		<!-- WPM -->
-		Accuracy:
-		<!-- Accuracy -->
-		Characters:
-		<!-- Correct/Incorrect -->
-
-		Go Again
-
-		<!-- Test Complete End -->
 
 		<div class="attribution">
 			Challenge by
