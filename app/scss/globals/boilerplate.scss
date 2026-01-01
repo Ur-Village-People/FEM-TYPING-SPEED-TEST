@@ -9,8 +9,14 @@ html {
 }
 body {
     font-family: var(--font-family);
-    background-color: var(--bg-main);
-    padding: to-rem(32) to-rem(112);
+    background-color: var(--neutral-900);
+    padding: to-rem(16) to-rem(16) to-rem(32);
+    @include breakpoint(medium) {
+      padding: to-rem(32) to-rem(32) to-rem(64);
+    }
+    @include breakpoint(large) {
+      padding: to-rem(32) to-rem(112);
+    }
 }
 .visually-hidden {
   position: absolute;

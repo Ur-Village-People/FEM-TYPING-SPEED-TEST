@@ -37,10 +37,6 @@
 		<main class="container">
 			<header class="header">
 				<div class="header__logo">
-					<img
-						src="./assets/images/logo-large.svg"
-						alt="Typing Test Logo"
-					/>
 				</div>
 				<h1 class="visually-hidden">Typing test</h1>
 				<div class="header__personal-best">
@@ -105,18 +101,18 @@
 
 				<section id="test-section" class="test-section">
 					<div id="test-wrapper" class="test-wrapper">
-						<div
-							id="start-screen"
-							class="test-wrapper__start-screen"
-						>
-							<button id="start-btn" class="test-wrapper__btn">
-								Start Typing Test
-							</button>
-							<p class="test-wrapper__p">
-								Or click the text and start typing
-							</p>
-						</div>
 						<div class="test">
+							<div
+								id="start-screen"
+								class="test-wrapper__start-screen"
+							>
+								<button id="start-btn" class="test-wrapper__btn">
+									Start Typing Test
+								</button>
+								<p class="test-wrapper__p">
+									Or click the text and start typing
+								</p>
+							</div>
 							<p
 								id="quote-display"
 								class="test__display"
@@ -135,19 +131,20 @@
 								aria-label="Typing input area"
 							></textarea>
 						</div>
-
-						<button
-							type="reset"
-							id="restart-btn"
-							class="test-wrapper__restart"
-						>
-							Restart Test
-							<img
-								src="./assets/images/icon-restart.svg"
-								alt="Restart"
-								class="img"
-							/>
-						</button>
+						<div class="test__reset-container">
+							<button
+								type="reset"
+								id="restart-btn"
+								class="test__restart"
+							>
+								Restart Test
+								<img
+									src="./assets/images/icon-restart.svg"
+									alt="Restart"
+									class="img"
+								/>
+							</button>
+						</div>
 					</div>
 
 					<div id="results-screen" class="result">

@@ -1,78 +1,50 @@
-// Default (Light Mode)
 :root {
-  /* Backgrounds */
-  --bg-main: hsl(220, 15%, 97%);      
-  --bg-section: hsl(220, 12%, 91%);   
-  --bg-card: hsl(220, 10%, 94%);      
-  
-  /* Text */
-  --text-main: hsl(220, 15%, 12%);    
-  --text-muted: hsl(220, 8%, 45%);    
-  --text-ghost: hsl(220, 6%, 60%);    
-  
-  /* Status & Accents */
-  --color-correct: hsl(145, 65%, 38%); 
-  --color-incorrect: hsl(354, 70%, 50%);   
-  --color-accent: hsl(214, 90%, 50%);  
-  --color-accent-hover: hsl(214, 90%, 45%);
-  --color-gold: hsl(42, 90%, 45%);     
-  
-  /* Glass, Borders & Shadows */
-  --border-subtle: hsl(220, 10%, 85%);
-  --glass-overlay: hsla(220, 15%, 97%, 0.5); // Light tint overlay
-  --caret-color: var(--color-accent);
-  --shadow-color: hsla(220, 20%, 10%, 0.1); // Subtle light-mode shadow
+  // NEUTRALS
+  --neutral-900-shield: hsla(0, 0%, 100%, 0.4);
+  --neutral-900: hsl(0, 0%, 100%);
+  --neutral-800: hsl(240, 5%, 96%);
+  --neutral-500: hsl(240, 3%, 42%);
+  --neutral-400: hsl(0, 0%, 15%);
+  --neutral-0:   hsl(0, 0%, 7%);
+
+//  ACCENTS
+  --blue-600:    hsl(214, 100%, 45%);
+  --blue-400:    hsl(210, 100%, 55%);
+  --red-500:     hsl(354, 70%, 45%);
+  --green-500:   hsl(140, 70%, 35%);
+  --yellow-400:  hsl(49, 95%, 40%);
+
 }
 
-// Dark Mode Override
+
 [data-theme="dark"] {
-  /* Backgrounds */
-  --bg-main: hsl(220, 20%, 8%);
-  --bg-section: hsl(220, 18%, 14%);
-  --bg-card: hsl(220, 16%, 18%);
+  --neutral-900-shield: rgba(0, 0, 0, 0.3);
+  --neutral-900: hsl(0, 0%, 7%);
+  --neutral-800: hsl(0, 0%, 15%);
+  --neutral-500: hsl(240, 3%, 46%);
+  --neutral-400: hsl(240, 1%, 59%);
+  --neutral-0:   hsl(0, 0%, 100%);
   
-  /* Text */
-  --text-main: hsl(0, 0%, 100%);
-  --text-muted: hsl(220, 8%, 60%);
-  --text-ghost: hsl(220, 6%, 35%);    
-  
-  /* Status & Accents */
-  --color-correct: hsl(145, 60%, 55%); 
-  --color-incorrect: hsl(354, 65%, 60%);
-  --color-accent: hsl(214, 95%, 55%);
-  --color-accent-hover: hsl(214, 95%, 62%);
-  --color-gold: hsl(42, 85%, 58%);
-  
-  /* Glass, Borders & Shadows */
-  --border-subtle: hsl(220, 14%, 25%);
-  --glass-overlay: hsla(220, 20%, 8%, 0.5); // Dark tint overlay
-  --caret-color: var(--color-accent);
-  --shadow-color: hsla(0, 0%, 0%, 0.4);      // Deeper dark-mode shadow
+  --blue-600:    hsl(214, 100%, 55%);
+  --blue-400:    hsl(210, 100%, 65%);
+  --red-500:     hsl(354, 63%, 57%);
+  --green-500:   hsl(140, 63%, 57%);
+  --yellow-400:  hsl(49, 85%, 70%);
 }
 @media (prefers-color-scheme: dark) {
-    html:not([data-theme]) {
-        /* Backgrounds */
-        --bg-main: hsl(220, 20%, 8%);
-        --bg-section: hsl(220, 18%, 14%);
-        --bg-card: hsl(220, 16%, 18%);
-        
-        /* Text */
-        --text-main: hsl(0, 0%, 100%);
-        --text-muted: hsl(220, 8%, 60%);
-        --text-ghost: hsl(220, 6%, 35%);    
-        
-        /* Status & Accents */
-        --color-correct: hsl(145, 60%, 55%); 
-        --color-incorrect: hsl(354, 65%, 60%);
-        --color-accent: hsl(214, 95%, 55%);
-        --color-accent-hover: hsl(214, 95%, 62%);
-        --color-gold: hsl(42, 85%, 58%);
-        
-        /* Glass, Borders & Shadows */
-        --border-subtle: hsl(220, 14%, 25%);
-        --glass-overlay: hsla(220, 20%, 8%, 0.5); // Dark tint overlay
-        --caret-color: var(--color-accent);
-        --shadow-color: hsla(0, 0%, 0%, 0.4);      // Deeper dark-mode shadow
+  html:not([data-theme]) {
+    --neutral-900-shield: rgba(0, 0, 0, 0.3);
+      --neutral-900: hsl(0, 0%, 7%);
+      --neutral-800: hsl(0, 0%, 15%);
+      --neutral-500: hsl(240, 3%, 46%);
+      --neutral-400: hsl(240, 1%, 59%);
+      --neutral-0:   hsl(0, 0%, 100%);
+      
+      --blue-600:    hsl(214, 100%, 55%);
+      --blue-400:    hsl(210, 100%, 65%);
+      --red-500:     hsl(354, 63%, 57%);
+      --green-500:   hsl(140, 63%, 57%);
+      --yellow-400:  hsl(49, 85%, 70%);
     }
 }
 // ## Colors

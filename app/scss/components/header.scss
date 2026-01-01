@@ -4,20 +4,32 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
+	align-items: center;
+	margin-bottom: to-rem(40);
 	&__logo {
+		background-image: url(../../../assets/images/logo-large.svg);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: left center;
+		width: to-rem(267);
+		height: to-rem(40);
+		@include breakpoint-down(small) {
+			background-image: url(../../../assets/images/logo-small.svg);
+			width: to-rem(40);
+			height: to-rem(40);
+		}
 	}
 	&__personal-best {
 		display: flex;
-        gap: to-rem(10);
-        // align-self: flex-end;
+		gap: to-rem(10);
+		// align-self: flex-end;
 	}
 	&__icon {
-        height: to-rem(18);
+		height: to-rem(18);
 		width: auto;
 	}
 	&__p {
-        white-space: nowrap;
-        color: var(--text-ghost);
+		white-space: nowrap;
+		color: var(--neutral-400);
 	}
 }
