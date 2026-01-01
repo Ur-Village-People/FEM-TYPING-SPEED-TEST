@@ -11,6 +11,9 @@ body {
     font-family: var(--font-family);
     background-color: var(--neutral-900);
     padding: to-rem(16) to-rem(16) to-rem(32);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     @include breakpoint(medium) {
       padding: to-rem(32) to-rem(32) to-rem(64);
     }

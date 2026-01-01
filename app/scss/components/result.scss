@@ -1,21 +1,51 @@
 @use '../util' as *;
 .result {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: to-rem(24);
+    padding-top: to-rem(16);
+    flex-direction: column;
+    @include breakpoint(medium) {
+        gap: to-rem(32);
+        padding-top: to-rem(24);
+    }
     &__img {
 
     }
     &__title {
-
+        color: var(--neutral-0);
+        font-size: to-rem(29);
+        @include breakpoint(medium) {
+            font-size: to-rem(54);
+        }
     }
     &__p {
-
+        color: var(--neutral-400);
+        font-size: to-rem(24);
     }
     &__final-stats {
-
+        display: flex;
+        flex-direction: column;
+        padding-top: to-rem(20);
+        padding-bottom: to-rem(32);
+        gap: to-rem(20);
+        flex: 1;
+        width: 100%;
+        @include breakpoint(medium) {
+            flex-direction: row;
+            justify-content: center;
+        }
     }
     &__container {
+        border: to-rem(1) solid var(--neutral-500);
+        padding: to-rem(16) to-rem(24);
+        border-radius: to-rem(8);
+        display: flex;
+        flex-direction: column;
+        width: calc(100%/3);
         &__title {
-
+            color: var(--neutral-400);
         }
         &__wpm {
 
@@ -34,6 +64,12 @@
         }
     }
     &__restart-btn {
-        
+        background-color: var(--neutral-0);
+        color: var(--neutral-900);
+        border-radius: to-rem(12);
+        padding: to-rem(10) to-rem(16);
+        display: flex;
+        gap: to-rem(10);
+        font-size: to-rem(24);
     }
 }

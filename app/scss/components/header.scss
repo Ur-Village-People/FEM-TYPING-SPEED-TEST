@@ -19,10 +19,14 @@
 			height: to-rem(40);
 		}
 	}
+	&__container {
+		display: flex;
+		gap: to-rem(10);
+		align-items: center;
+	}
 	&__personal-best {
 		display: flex;
 		gap: to-rem(10);
-		// align-self: flex-end;
 	}
 	&__icon {
 		height: to-rem(18);
@@ -31,5 +35,16 @@
 	&__p {
 		white-space: nowrap;
 		color: var(--neutral-400);
+	}
+	&__btn-container {
+		display: flex;
+		gap: to-rem(10);
+	}
+	&__btn {
+		padding: to-rem(6) to-rem(10);
+		background: transparent;
+		border: to-rem(1) solid var(--neutral-500);
+		color: var(--neutral-0);
+		border-radius: to-rem(8);
 	}
 }

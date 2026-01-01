@@ -5,8 +5,9 @@
     padding-bottom: to-rem(16);
     border-bottom: to-rem(1) solid var(--neutral-500);
     margin-bottom: to-rem(32);
-    @include breakpoint(large) {
-        flex-direction: column;
+    flex-direction: column;
+    @include breakpoint(medium) {
+        flex-direction: row;
         gap: to-rem(16);
     }
     &__container {
@@ -30,12 +31,16 @@
         display: flex;
         gap: to-rem(10);
         align-items: center;
+        flex-direction: column;
+        @include breakpoint(medium) {
+            flex-direction: row;
+        }
     }
     &__difficulty,
     &__mode {
         .difficulty-btn,
         .mode-btn {
-            padding: to-rem(10) to-rem(6);
+            padding: to-rem(6) to-rem(10);
             background: transparent;
             border: to-rem(1) solid var(--neutral-500);
             color: var(--neutral-0);

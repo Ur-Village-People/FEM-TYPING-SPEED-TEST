@@ -1,4 +1,4 @@
 @use '../util/' as *;
 .container {
-    max-width: to-rem(1216);
+    max-width: fit-content;
 }
