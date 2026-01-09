@@ -51,11 +51,16 @@
 						</p>
 					</div>
 					<div class="header__btn-container">
-						<button class="header__btn" id="theme-switcher">
-							
+						<button
+							class="header__btn"
+							id="theme-switcher"
+						></button>
+						<button class="header__btn" id="history">
+							<img src="./assets/images/clock.svg" alt="" />
 						</button>
-						<button class="header__btn">history</button>
-						<button class="header__btn">mute</button>
+						<button class="header__btn" id="volume-control">
+							mute
+						</button>
 					</div>
 				</div>
 			</header>
@@ -68,12 +73,12 @@
 						<div class="stats-bar__divider"></div>
 						<p class="stats-bar__title">
 							Accuracy:
-							<span id="current-accuracy" class="span">100%</span>
+							<span id="current-accuracy" class="span">100</span>%
 						</p>
 						<div class="stats-bar__divider"></div>
 						<p class="stats-bar__title">
 							Time:
-							<span id="timer-display" class="span">60s</span>
+							<span id="timer-display" class="span">0:60</span>s
 						</p>
 					</div>
 					<div class="stats-bar__container">
@@ -81,35 +86,132 @@
 							id="difficulty-settings"
 							class="stats-bar__difficulty"
 						>
-							<p class="stats-bar__title">Difficulty:</p>
-							<button class="difficulty-btn" data-level="easy">
-								Easy
-							</button>
-							<button class="difficulty-btn" data-level="medium">
-								Medium
-							</button>
-							<button class="difficulty-btn" data-level="hard">
-								Hard
-							</button>
+							<fieldset class="stats-bar__desktop-option">
+								<legend class="visually-hidden">
+									Difficulty
+								</legend>
+								<p class="stats-bar__title">Difficulty:</p>
+								<div>
+									<input
+										type="radio"
+										class="visually-hidden"
+										name="difficulty level"
+										id="easy"
+									/>
+									<label for="easy" class="difficulty-btn"
+										>Easy</label
+									>
+								</div>
+								<div>
+									<input
+										type="radio"
+										class="visually-hidden"
+										name="difficulty level"
+										id="medium"
+									/>
+									<label for="medium" class="difficulty-btn"
+										>Medium</label
+									>
+								</div>
+								<div>
+									<input
+										type="radio"
+										class="visually-hidden"
+										name="difficulty level"
+										id="hard"
+									/>
+									<label for="hard" class="difficulty-btn"
+										>Hard</label
+									>
+								</div>
+							</fieldset>
+							<div class="stats-bar__mobile-option">
+								<label
+									for="difficulty-mobile"
+									class="visually-hidden"
+									>Difficulty</label
+								>
+								<select
+									name="difficulty-mobile"
+									id="difficulty-mobile"
+								>
+									<option value="easy">Easy</option>
+									<option value="medium">Medium</option>
+									<option value="hard">Hard</option>
+								</select>
+							</div>
 						</div>
 						<div class="stats-bar__divider"></div>
 						<div id="mode-settings" class="stats-bar__mode">
-							<p class="stats-bar__title">Mode:</p>
-							<button class="mode-btn is-active" data-time="15">
-								15s
-							</button>
-							<button class="mode-btn" data-time="30">30s</button>
-							<button class="mode-btn" data-time="60">60s</button>
-							<button class="mode-btn" data-time="120">
-								120s
-							</button>
-							<button class="mode-btn" data-mode="passage">
-								Passage
-							</button>
+							<fieldset class="stats-bar__desktop-option">
+								<legend class="visually-hidden">Mode</legend>
+								<p class="stats-bar__title">Mode:</p>
+								<div>
+									<input
+										type="radio"
+										id="15"
+										name="mode"
+										class="visually-hidden"
+									/>
+									<label for="15" class="mode-btn">15s</label>
+								</div>
+								<div>
+									<input
+										type="radio"
+										id="30"
+										name="mode"
+										class="visually-hidden"
+									/>
+									<label for="30" class="mode-btn">30s</label>
+								</div>
+								<div>
+									<input
+										type="radio"
+										id="60"
+										name="mode"
+										class="visually-hidden"
+										checked
+									/>
+									<label for="60" class="mode-btn">60s</label>
+								</div>
+								<div>
+									<input
+										type="radio"
+										id="120"
+										name="mode"
+										class="visually-hidden"
+									/>
+									<label for="120" class="mode-btn"
+										>120s</label
+									>
+								</div>
+								<div>
+									<input
+										type="radio"
+										id="passage"
+										name="mode"
+										class="visually-hidden"
+									/>
+									<label for="passage" class="mode-btn"
+										>Passage</label
+									>
+								</div>
+							</fieldset>
+							<div class="stats-bar__mobile-option">
+								<label for="mode-mobile" class="visually-hidden"
+									>Mode</label
+								>
+								<select name="mode-mobile" id="mode-mobile">
+									<option value="15">15s</option>
+									<option value="30">30s</option>
+									<option value="60" selected>60s</option>
+									<option value="120">120s</option>
+									<option value="passage">Passage</option>
+								</select>
+							</div>
 						</div>
 					</div>
 				</section>
-
 				<section id="test-section" class="test-section">
 					<div id="test-wrapper" class="test-wrapper">
 						<div class="test">
@@ -131,33 +233,7 @@
 								id="quote-display"
 								class="test__display"
 								aria-live="polite"
-							>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Illo cumque maxime numquam ad
-								qui asperiores odio delectus voluptas rem, animi
-								deleniti cum exercitationem itaque voluptate
-								illum? Quod praesentium in cupiditate? Illum,
-								numquam possimus illo facere, doloribus quas
-								laboriosam asperiores obcaecati ratione fuga
-								mollitia. Quae consequuntur porro velit deleniti
-								cum nulla distinctio? Incidunt, vero. Commodi
-								voluptatibus doloribus totam laborum explicabo
-								ea? Tempore ipsa accusantium recusandae mollitia
-								dolorum ipsam illum ab, et quidem culpa dolorem
-								perferendis modi suscipit atque laborum dolores
-								id, repellat illo neque. Quidem magni harum
-								deleniti eos voluptatem perferendis? Nihil
-								ratione est sed a ducimus quam, sunt dolorum?
-								Tenetur, illo, eos, laudantium laborum
-								repellendus maiores repellat itaque quod animi
-								voluptas deserunt enim nam voluptatem? Iste
-								repellendus rem labore explicabo! Ad, itaque!
-								Rem eum harum dolorum nostrum aliquid fugiat
-								sapiente similique nihil quia odit perferendis
-								numquam doloribus, possimus dignissimos quam
-								ipsam saepe id! Pariatur blanditiis, est amet
-								consectetur eaque earum.
-							</p>
+							></p>
 							<textarea
 								id="typing-input"
 								class="visually-hidden"
@@ -182,7 +258,6 @@
 							</button>
 						</div>
 					</div>
-
 					<div id="results-screen" class="result">
 						<div class="result__img"></div>
 						<h2 class="result__title">Test Complete!</h2>
@@ -236,7 +311,6 @@
 				</section>
 			</div>
 		</main>
-
 		<div class="attribution">
 			Challenge by
 			<a href="https://www.frontendmentor.io?ref=challenge"

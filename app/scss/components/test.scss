@@ -13,10 +13,13 @@
 	}
 	&__display {
 		width: 100%;
-		height: fit-content;
+		min-height: to-rem(438);
 		color: var(--neutral-400);
-		font-size: to-rem(18);
-		line-height: 1.5;
+		.span {
+			font-size: to-rem(40);
+			line-height: 136%;
+			letter-spacing: 1%;
+		}
 		.correct {
 			color: var(--green-500);
 		}
@@ -27,6 +30,10 @@
 		@include breakpoint(medium) {
 			font-size: to-rem(20);
 			line-height: 1.6;
+			min-height: to-rem(648);
+		}
+		@include breakpoint(large) {
+			min-height: to-rem(540);
 		}
 	}
 	&__reset-container {

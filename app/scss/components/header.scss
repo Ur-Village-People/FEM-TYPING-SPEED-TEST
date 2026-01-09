@@ -46,5 +46,8 @@
 		border: to-rem(1) solid var(--neutral-500);
 		color: var(--neutral-0);
 		border-radius: to-rem(8);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }

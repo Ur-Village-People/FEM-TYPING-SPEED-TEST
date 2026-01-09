@@ -15,6 +15,23 @@
         gap: to-rem(6);
         align-items: flex-start;
     }
+    &__desktop-option {
+        display: flex;
+        gap: to-rem(6);
+        align-items: flex-start;
+        border: none;
+    }
+    &__mobile-option {
+        display: none;
+    }
+    @include breakpoint-down(small) {
+        .stats-bar__desktop-option {
+            display: none;
+        }
+        .stats-bar__mobile-option {
+            display: flex;
+        }
+    }
     &__title { 
         color: var(--neutral-500);
         display: flex;

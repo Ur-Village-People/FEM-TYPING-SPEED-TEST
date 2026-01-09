@@ -8,7 +8,7 @@ const webpack = require('webpack-stream');
 const obfuscator = require('gulp-javascript-obfuscator');
 const isProd = process.env.NODE_ENV === 'production';
 function copyTask() {
-    return src(['*.html', 'assets/**/*'], { base: '.' })
+    return src(['*.html', '*.json', 'assets/**/*'], { base: '.' })
         .pipe(dest('dist'));
 }
 function scssTask() {
@@ -22,7 +22,6 @@ function scssTask() {
         ]))
         .pipe(dest('dist', { sourcemaps: '.' }));
 }
-
 function jsTask() {
     let stream = src('app/js/script.js')
         .pipe(webpack({

@@ -1,11 +1,14 @@
 @use '../util' as *;
 .result {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: to-rem(24);
     padding-top: to-rem(16);
     flex-direction: column;
+    &.is-active {
+        display: flex;
+    }
     @include breakpoint(medium) {
         gap: to-rem(32);
         padding-top: to-rem(24);
