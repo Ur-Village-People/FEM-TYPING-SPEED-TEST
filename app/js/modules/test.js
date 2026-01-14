@@ -107,11 +107,208 @@
 // 	})
 // 	renderNewQuote()
 // }
+
+// import { gameState } from "./state.js"
+// import { startTimer, updateStatsUI } from "./stats.js"
+// import { setupDifficultyControls } from "./difficulty.js"
+// import { setupModeControls } from "./mode.js"
+// import { showResults } from "./results.js";
+// const url = "data.json"
+// export async function loadQuotes() {
+// 	try {
+// 		const resp = await fetch(url)
+// 		if (!resp.ok) {
+// 			const msg = `There was an error "${resp.status} ${resp.statusText}"`
+// 			throw new Error(msg)
+// 		}
+// 		const data = await resp.json()
+// 		gameState.quotesData = data
+// 		console.log("Quotes loaded:", data)
+// 		return data
+// 	} catch (error) {
+// 		console.error("Failed to load quotes:", error)
+// 		gameState.quotesData = {
+// 			easy: [
+// 				{
+// 					id: "fallback-easy",
+// 					text: "The quick brown fox jumps over the lazy dog.",
+// 				},
+// 			],
+// 			medium: [
+// 				{
+// 					id: "fallback-medium",
+// 					text: "Life is what happens when you're busy making other plans.",
+// 				},
+// 			],
+// 			hard: [
+// 				{
+// 					id: "fallback-hard",
+// 					text: "The only limit to our realization of tomorrow is our doubts of today.",
+// 				},
+// 			],
+// 		}
+// 		return gameState.quotesData
+// 	}
+// }
+// export function focusInput() {
+// 	const input = document.querySelector("#typing-input")
+// 	if (input) {
+// 		input.focus()
+// 	}
+// }
+// export function calcLogic() {
+// 	const correctChars = gameState.totalChars - gameState.incorrectChars
+// 	gameState.accuracy =
+// 		gameState.totalChars > 0
+// 			? Math.floor((correctChars / gameState.totalChars) * 100)
+// 			: 100
+// 	if (gameState.isStarted && gameState.timer > 0) {
+// 		const minutesPassed = (Date.now() - gameState.startTime) / 60000
+// 		gameState.wpm =
+// 			Math.round(gameState.totalChars / 5 / minutesPassed) || 0
+// 	}
+// 	updateStatsUI()
+// }
+// function getRandomQuote() {
+// 	if (!gameState.quotesData) {
+// 		console.error("Quotes not loaded yet!")
+// 		return { id: "loading", text: "Loading quotes... Please wait." }
+// 	}
+// 	const difficultyQuotes = gameState.quotesData[gameState.currentDifficulty]
+// 	if (!difficultyQuotes || difficultyQuotes.length === 0) {
+// 		console.error(
+// 			`No quotes found for difficulty: ${gameState.currentDifficulty}`
+// 		)
+// 		const fallbackQuotes = gameState.quotesData.easy || [
+// 			{ id: "default", text: "Default quote" },
+// 		]
+// 		return fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)]
+// 	}
+// 	const randomIndex = Math.floor(Math.random() * difficultyQuotes.length)
+// 	return difficultyQuotes[randomIndex]
+// }
+// export function renderNewQuote() {
+// 	const quoteDisplay = document.getElementById("quote-display")
+// 	if (!quoteDisplay) {
+// 		console.error("quote-display element not found!")
+// 		return
+// 	}
+// 	const quoteObj = getRandomQuote()
+// 	const quoteText = quoteObj.text
+// 	gameState.currentQuoteId = quoteObj.id
+// 	quoteDisplay.innerHTML = quoteText
+// 		.split("")
+// 		.map((character) => `<span class='span'>${character}</span>`)
+// 		.join("")
+// 	const quoteInput = document.getElementById("typing-input")
+// 	if (quoteInput) {
+// 		quoteInput.value = ""
+// 		gameState.totalChars = 0
+// 		gameState.incorrectChars = 0
+// 		updateStatsUI()
+// 	}
+// 	quoteDisplay.setAttribute("aria-label", `Quote to type: ${quoteText}`)
+// 	console.log(`Loaded quote: ${quoteObj.id} (${gameState.currentDifficulty})`)
+// }
+// function handleGameOver() {
+//     console.log("Quote completed! Getting new quote...");
+
+//     // For now, just show new quote
+//     // But for passage mode, you might want to track multiple quotes
+//     setTimeout(() => {
+//         renderNewQuote();
+//     }, 500);
+// }
+
+// // Also add this for timer-based game over
+// export function handleTimerGameOver() {
+//     showResults();
+// }
+
+// export async function initTypingLogic() {
+// 	await loadQuotes()
+// 	const quoteDisplay = document.getElementById("quote-display")
+// 	const quoteInput = document.getElementById("typing-input")
+// 	const startScreen = document.getElementById("start-screen")
+// 	const restartBtn = document.getElementById("restart-btn")
+// 	const resultRestartBtn = document.getElementById("result-restart-btn")
+// 	setupDifficultyControls()
+// 	setupModeControls()
+// 	startScreen.addEventListener("click", () => {
+// 		startScreen.classList.add("is-active")
+// 		focusInput()
+// 		if (!gameState.isStarted) {
+// 			gameState.isStarted = true
+// 			gameState.startTime = Date.now()
+// 			startTimer()
+// 		}
+// 	})
+// 	restartBtn.addEventListener("click", () => {
+// 		gameState.reset()
+// 		if (quoteInput) {
+// 			quoteInput.value = ""
+// 		}
+// 		renderNewQuote()
+// 		updateStatsUI()
+// 		startScreen.classList.remove("is-active")
+// 		stopTimer() // Stop any running timer
+// 		resetTimer()
+// 	})
+// 	if (resultRestartBtn) {
+// 		resultRestartBtn.addEventListener("click", () => {
+// 			gameState.reset()
+// 			if (quoteInput) {
+// 				quoteInput.value = ""
+// 			}
+// 			renderNewQuote()
+// 			updateStatsUI()
+// 			startScreen.classList.remove("is-active")
+// 			stopTimer()
+// 			resetTimer()
+// 		})
+// 	}
+// 	if (quoteInput) {
+// 		quoteInput.addEventListener("input", () => {
+// 			const arrayQuote = quoteDisplay.querySelectorAll("span")
+// 			const arrayInput = quoteInput.value.split("")
+// 			gameState.totalChars = arrayInput.length
+// 			gameState.incorrectChars = 0
+// 			arrayQuote.forEach((characterSpan, index) => {
+// 				const character = arrayInput[index]
+// 				if (character == null) {
+// 					characterSpan.classList.remove("correct", "incorrect")
+// 				} else if (character === characterSpan.innerText) {
+// 					characterSpan.classList.add("correct")
+// 					characterSpan.classList.remove("incorrect")
+// 				} else {
+// 					characterSpan.classList.add("incorrect")
+// 					characterSpan.classList.remove("correct")
+// 					gameState.incorrectChars++
+// 				}
+// 			})
+// 			calcLogic()
+// 			if (arrayInput.length === arrayQuote.length) {
+// 				handleGameOver()
+// 			}
+// 		})
+// 	}
+// 	renderNewQuote()
+// }
+
 import { gameState } from "./state.js"
-import { startTimer, updateStatsUI } from "./stats.js"
+import {
+	startTimer,
+	updateStatsUI,
+	handleTimerGameOver,
+	stopTimer,
+	resetTimer,
+} from "./stats.js" // Add stopTimer and resetTimer here
 import { setupDifficultyControls } from "./difficulty.js"
 import { setupModeControls } from "./mode.js"
+import { showResults } from "./results.js"
+
 const url = "data.json"
+
 export async function loadQuotes() {
 	try {
 		const resp = await fetch(url)
@@ -120,7 +317,7 @@ export async function loadQuotes() {
 			throw new Error(msg)
 		}
 		const data = await resp.json()
-		gameState.quotesData = data 
+		gameState.quotesData = data
 		console.log("Quotes loaded:", data)
 		return data
 	} catch (error) {
@@ -148,12 +345,14 @@ export async function loadQuotes() {
 		return gameState.quotesData
 	}
 }
+
 export function focusInput() {
 	const input = document.querySelector("#typing-input")
 	if (input) {
 		input.focus()
 	}
 }
+
 export function calcLogic() {
 	const correctChars = gameState.totalChars - gameState.incorrectChars
 	gameState.accuracy =
@@ -167,12 +366,15 @@ export function calcLogic() {
 	}
 	updateStatsUI()
 }
+
 function getRandomQuote() {
 	if (!gameState.quotesData) {
 		console.error("Quotes not loaded yet!")
 		return { id: "loading", text: "Loading quotes... Please wait." }
 	}
+
 	const difficultyQuotes = gameState.quotesData[gameState.currentDifficulty]
+
 	if (!difficultyQuotes || difficultyQuotes.length === 0) {
 		console.error(
 			`No quotes found for difficulty: ${gameState.currentDifficulty}`
@@ -182,22 +384,28 @@ function getRandomQuote() {
 		]
 		return fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)]
 	}
+
 	const randomIndex = Math.floor(Math.random() * difficultyQuotes.length)
 	return difficultyQuotes[randomIndex]
 }
+
 export function renderNewQuote() {
 	const quoteDisplay = document.getElementById("quote-display")
 	if (!quoteDisplay) {
 		console.error("quote-display element not found!")
 		return
 	}
+
 	const quoteObj = getRandomQuote()
 	const quoteText = quoteObj.text
+
 	gameState.currentQuoteId = quoteObj.id
+
 	quoteDisplay.innerHTML = quoteText
 		.split("")
 		.map((character) => `<span class='span'>${character}</span>`)
 		.join("")
+
 	const quoteInput = document.getElementById("typing-input")
 	if (quoteInput) {
 		quoteInput.value = ""
@@ -205,25 +413,29 @@ export function renderNewQuote() {
 		gameState.incorrectChars = 0
 		updateStatsUI()
 	}
+
 	quoteDisplay.setAttribute("aria-label", `Quote to type: ${quoteText}`)
 	console.log(`Loaded quote: ${quoteObj.id} (${gameState.currentDifficulty})`)
 }
-function handleGameOver() {
-	console.log("Quote completed! Getting new quote...")
-	setTimeout(() => {
-		renderNewQuote()
-	}, 500)
+
+// Handle when quote is fully typed (for passage mode)
+function handleQuoteCompletion() {
+	console.log("Quote fully typed - showing results")
+	showResults()
 }
 
 export async function initTypingLogic() {
 	await loadQuotes()
+
 	const quoteDisplay = document.getElementById("quote-display")
 	const quoteInput = document.getElementById("typing-input")
 	const startScreen = document.getElementById("start-screen")
 	const restartBtn = document.getElementById("restart-btn")
 	const resultRestartBtn = document.getElementById("result-restart-btn")
+
 	setupDifficultyControls()
 	setupModeControls()
+
 	startScreen.addEventListener("click", () => {
 		startScreen.classList.add("is-active")
 		focusInput()
@@ -233,6 +445,7 @@ export async function initTypingLogic() {
 			startTimer()
 		}
 	})
+
 	restartBtn.addEventListener("click", () => {
 		gameState.reset()
 		if (quoteInput) {
@@ -241,7 +454,10 @@ export async function initTypingLogic() {
 		renderNewQuote()
 		updateStatsUI()
 		startScreen.classList.remove("is-active")
+		stopTimer()
+		resetTimer()
 	})
+
 	if (resultRestartBtn) {
 		resultRestartBtn.addEventListener("click", () => {
 			gameState.reset()
@@ -255,12 +471,14 @@ export async function initTypingLogic() {
 			resetTimer()
 		})
 	}
+
 	if (quoteInput) {
 		quoteInput.addEventListener("input", () => {
 			const arrayQuote = quoteDisplay.querySelectorAll("span")
 			const arrayInput = quoteInput.value.split("")
 			gameState.totalChars = arrayInput.length
 			gameState.incorrectChars = 0
+
 			arrayQuote.forEach((characterSpan, index) => {
 				const character = arrayInput[index]
 				if (character == null) {
@@ -274,11 +492,18 @@ export async function initTypingLogic() {
 					gameState.incorrectChars++
 				}
 			})
+
 			calcLogic()
 			if (arrayInput.length === arrayQuote.length) {
-				handleGameOver()
+				if (
+					gameState.timer === 0 ||
+					arrayInput.length === arrayQuote.length
+				) {
+					handleQuoteCompletion()
+				}
 			}
 		})
 	}
+
 	renderNewQuote()
 }

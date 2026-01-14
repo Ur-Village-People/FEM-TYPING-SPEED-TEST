@@ -9,7 +9,7 @@
 			rel="icon"
 			type="image/png"
 			sizes="32x32"
-			href="assets/images/favicon-32x32.png"
+			href="./assets/images/favicon-32x32.png"
 		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,12 +58,98 @@
 						<button class="header__btn" id="history">
 							<img src="./assets/images/clock.svg" alt="" />
 						</button>
+						<button type="button" class="header__btn">
+							<img src="./assets/images/sliders.svg" alt="" />
+						</button>
 						<button class="header__btn" id="volume-control">
 							mute
 						</button>
 					</div>
 				</div>
 			</header>
+			<div>
+				<fieldset class="stats-bar__desktop-option">
+					<legend class="visually-hidden">Difficulty</legend>
+					<p class="stats-bar__title">Difficulty:</p>
+					<div>
+						<input
+							type="radio"
+							class="visually-hidden"
+							name="difficulty level"
+							id="easy"
+						/>
+						<label for="easy" class="difficulty-btn">Easy</label>
+					</div>
+					<div>
+						<input
+							type="radio"
+							class="visually-hidden"
+							name="difficulty level"
+							id="medium"
+						/>
+						<label for="medium" class="difficulty-btn"
+							>Medium</label
+						>
+					</div>
+					<div>
+						<input
+							type="radio"
+							class="visually-hidden"
+							name="difficulty level"
+							id="hard"
+						/>
+						<label for="hard" class="difficulty-btn">Hard</label>
+					</div>
+				</fieldset>
+				<div>
+					<label for="categories">Categories</label>
+					<select name="categories" id="categories">
+						<option value="Global Vocabulary">
+							Global Vocabulary
+						</option>
+						<option value="Classic Literature">
+							Classic Literature
+						</option>
+						<option value="Cultural Scripts">
+							Cultural Scripts
+						</option>
+						<option value="Historical Records">
+							Historical Records
+						</option>
+						<option value="Syntax Patterns">Syntax Patterns</option>
+						<option value="Technical Manuals">
+							Technical Manuals
+						</option>
+						<option value="Grammar Mastery">Grammar Mastery</option>
+						<option value="Medical Journals">
+							Medical Journals
+						</option>
+					</select>
+				</div>
+				<div>
+					<label for="language">Language</label>
+					<select name="language" id="language">
+						<option value="English">English</option>
+						<option value="Spanish">Spanish</option>
+						<option value="French">French</option>
+						<option value="German">German</option>
+						<option value="Portuguese">Portuguese</option>
+						<option value="Italian">Italian</option>
+						<option value="Dutch">Dutch</option>
+						<option value="Latin">Latin</option>
+					</select>
+				</div>
+			</div>
+			<div>
+				<div>
+					<button></button>
+					<button></button>
+					<button></button>
+					<div class=""></div>
+					<div class=""></div>
+					<div class=""></div>
+				</div>
+			</div>
 			<div id="game-container" class="game-container">
 				<section id="stats-bar" class="stats-bar">
 					<div class="stats-bar__container">

@@ -1,5 +1,5 @@
 import { gameState } from "./state.js";
-import { updateStatsUI } from "./stats.js";
+import { updateStatsUI, stopTimer, resetTimer } from "./stats.js";
 export function setupModeControls() {
     const mode15 = document.getElementById("15");
     const mode30 = document.getElementById("30");
@@ -9,10 +9,16 @@ export function setupModeControls() {
     const modeDropdown = document.getElementById("mode-mobile");
     function updateMode(value) {
         console.log("Changing mode to:", value);
+        stopTimer();
         if (value === "passage") {
             gameState.timer = 0;
         } else {
             gameState.timer = parseInt(value);
+        }
+        if (gameState.isStarted) {
+            gameState.isStarted = false;
+            gameState.startTime = null;
+            console.log("Mode changed during test - test reset");
         }
         if (mode15) mode15.checked = (value === "15");
         if (mode30) mode30.checked = (value === "30");
@@ -23,6 +29,7 @@ export function setupModeControls() {
             modeDropdown.value = value;
         }
         updateStatsUI();
+        resetTimer();
     }
     if (mode15) {
         mode15.addEventListener('change', (e) => {
@@ -54,5 +61,5 @@ export function setupModeControls() {
             updateMode(e.target.value);
         });
     }
-    updateMode("60"); //problem?
+    updateMode("60"); 
 }
